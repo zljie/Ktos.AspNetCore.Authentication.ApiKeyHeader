@@ -1,4 +1,4 @@
-# Ktos.AspNetCore.Authentication.ApiKeyHeader
+# AspNetCore.Authentication.ApiKeyHeader
 [![Build status](https://dev.azure.com/ktos/Ktos.AspNetCore.Authentication.ApiKeyHeader/_apis/build/status/Ktos.AspNetCore.Authentication.ApiKeyHeader-CI)](https://dev.azure.com/ktos/Ktos.AspNetCore.Authentication.ApiKeyHeader/_build/latest?definitionId=4)
 [![NuGet](https://img.shields.io/nuget/v/Ktos.AspNetCore.Authentication.ApiKeyHeader.svg)](https://www.nuget.org/packages/Ktos.AspNetCore.Authentication.ApiKeyHeader/)
 
@@ -40,6 +40,14 @@ public void ConfigureServices(IServiceCollection services)
     })
         .AddApiKeyHeaderAuthentication(options => { options.ApiKey = "my-secret-api-key"; options.Header = "x-api-key"; );
 }
+```
+    [Authorize()]
+    public class ValuesController : ControllerBase
+    {
+    }
+```csharp
+
+
 ```
 
 Of course, you have to ensure your controller or actions are expecting user to 
