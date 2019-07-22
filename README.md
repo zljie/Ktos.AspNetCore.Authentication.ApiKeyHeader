@@ -50,7 +50,7 @@ public void ConfigureServices(IServiceCollection services)
 ```
 
 ```csharp
-c.AddSecurityDefinition("x-api-key", new ApiKeyScheme
+SwaggerGen.AddSecurityDefinition("x-api-key", new ApiKeyScheme
                 {
                     Description = "Standard Authorization header using the Bearer scheme. ",
                     In = "header",
