@@ -41,13 +41,23 @@ public void ConfigureServices(IServiceCollection services)
         .AddApiKeyHeaderAuthentication(options => { options.ApiKey = "my-secret-api-key"; options.Header = "x-api-key"; );
 }
 ```
-    [Authorize()]
+   
+```csharp
+ [Authorize()]
     public class ValuesController : ControllerBase
     {
     }
+```
+
 ```csharp
-
-
+c.AddSecurityDefinition("x-api-key", new ApiKeyScheme
+                {
+                    Description = "Standard Authorization header using the Bearer scheme. ",
+                    In = "header",
+                    Name = "x-api-key"
+                });
+                c.AddSecurityRequirement(new Dictionary<string, IEnumerable<string>> {
+                { "x-api-key", Enumerable.Empty<string>() },
 ```
 
 Of course, you have to ensure your controller or actions are expecting user to 
@@ -59,5 +69,4 @@ remember about using `app.UseAuthentication()` before your `app.UseMvc()`.
 
 Licensed under MIT
 
-Have a lot of fun.
---ktos
+
